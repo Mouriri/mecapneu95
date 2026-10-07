@@ -47,7 +47,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
     
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=3">
+
+    <!-- Early Theme Init (Prevents theme flashing) -->
+    <script>
+        (function() {
+            try {
+                var theme = localStorage.getItem('mecapneu_theme') || 'dark';
+                document.documentElement.setAttribute('data-theme', theme);
+            } catch (e) {}
+        })();
+    </script>
     
     <!-- 1. Schema.org / LocalBusiness & TireShop JSON-LD -->
     <script type="application/ld+json">
@@ -396,9 +406,9 @@
         <!-- 4. GALERIE PHOTOS / PNEUS & ATELIER -->
         <section class="gallery-section" id="galerie" aria-label="Photos de l'atelier et pneumatiques">
             <div class="container">
-                <div style="text-align:center; margin-bottom: 2rem;">
+                <div class="section-header" style="margin-bottom: 2rem;">
                     <span class="section-tag">Notre Atelier à Écouen</span>
-                    <h2 style="font-family:var(--font-heading); font-size:1.6rem; font-weight:800;">En Direct de notre Garage</h2>
+                    <h2 class="section-title">En Direct de notre Garage</h2>
                 </div>
 
                 <div class="gallery-grid">
