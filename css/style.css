@@ -1045,11 +1045,15 @@ img {
 }
 
 .mobile-nav-drawer.open {
-    max-height: 600px;
+    max-height: calc(100vh - 65px);
+    max-height: calc(100dvh - 65px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
 }
 
 .mobile-nav-content {
-    padding: 1.25rem 1.5rem 1.75rem;
+    padding: 1.25rem 1.5rem calc(2.5rem + 70px);
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
