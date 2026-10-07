@@ -134,9 +134,9 @@ function initMobileMenu() {
         toggleMenu();
     });
 
-    // Fermer le menu lors du clic sur un lien
-    const mobileLinks = mobileDrawer.querySelectorAll('.mobile-nav-link, a');
-    mobileLinks.forEach(link => {
+    // Fermer le menu UNIQUEMENT lors du clic sur un lien d'ancrage interne (#services, #contact, etc.)
+    const internalLinks = mobileDrawer.querySelectorAll('.mobile-nav-link[href^="#"]');
+    internalLinks.forEach(link => {
         link.addEventListener('click', () => {
             closeMenu();
         });
