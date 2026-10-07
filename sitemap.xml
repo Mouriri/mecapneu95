@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+    <url>
+        <loc>https://mecapneu95.fr/</loc>
+        <lastmod>2026-10-04</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+        <image:image>
+            <image:loc>https://mecapneu95.fr/images/atelier-stock-pneus.jpg</image:loc>
+            <image:title>Stock de pneus neufs et occasions Meca Pneu 95</image:title>
+            <image:caption>Garage pneumatique et montage sans rendez-vous à Écouen</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://mecapneu95.fr/images/montage-equilibrage-pneu.png</image:loc>
+            <image:title>Montage et équilibrage de pneu</image:title>
+            <image:caption>Atelier de montage de pneu et valve haute précision</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://mecapneu95.fr/images/garage-mercedes-pneus.jpg</image:loc>
+            <image:title>Entretien mécanique et pneus de prestige</image:title>
+            <image:caption>Véhicule à l'atelier Meca Pneu 95 Écouen</image:caption>
+        </image:image>
+    </url>
+</urlset>

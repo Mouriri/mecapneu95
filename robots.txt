@@ -1,0 +1,6 @@
+# Robots.txt pour MECA PNEU 95
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://mecapneu95.fr/sitemap.xml
