@@ -254,6 +254,12 @@ img {
     font-weight: 800;
     letter-spacing: -0.5px;
     color: var(--text-primary);
+    text-decoration: none;
+    transition: color var(--transition);
+}
+
+.logo:hover {
+    color: var(--primary);
 }
 
 .logo-badge {
@@ -351,6 +357,49 @@ img {
 .btn-instagram:hover {
     opacity: 0.92;
     transform: translateY(-1px);
+}
+
+.btn-tiktok {
+    background: #010101;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    box-shadow: -1px -1px 0px rgba(0, 242, 254, 0.6), 1px 1px 0px rgba(254, 44, 85, 0.6);
+}
+
+.btn-tiktok:hover {
+    background: #111111;
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: -2px -2px 6px rgba(0, 242, 254, 0.7), 2px 2px 6px rgba(254, 44, 85, 0.7);
+    transform: translateY(-1px);
+}
+
+.btn-snapchat {
+    background: #FFFC00;
+    color: #000000 !important;
+    font-weight: 700;
+}
+
+.btn-snapchat:hover {
+    background: #fff400;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 252, 0, 0.35);
+}
+
+.social-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: var(--radius-full);
+    font-size: 0.84rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.social-pill:hover {
+    transform: translateY(-2px);
 }
 
 .mobile-menu-btn {
@@ -1166,6 +1215,9 @@ img {
 }
 
 @media (max-width: 768px) {
+    .navbar {
+        justify-content: flex-end;
+    }
     .top-bar {
         display: none;
     }
