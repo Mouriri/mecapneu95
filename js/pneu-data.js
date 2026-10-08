@@ -87,7 +87,7 @@ const REVIEWS_DATA = [
         name: "Sofiane B.",
         date: "Il y a 2 semaines",
         rating: 5,
-        comment: "Excellent accueil d'Aymen et Khalid ! Pneus montés en 15 minutes chrono sans rendez-vous. Tarif imbattable pour des pneus d'occasion en parfait état (on dirait des neufs). Je recommande les yeux fermés !",
+        comment: "Excellent accueil de toute l'équipe ! Pneus montés en 15 minutes chrono sans rendez-vous. Tarif imbattable pour des pneus d'occasion en parfait état (on dirait des neufs). Je recommande les yeux fermés !",
         service: "Montage 2 pneus avant + équilibrage"
     },
     {
