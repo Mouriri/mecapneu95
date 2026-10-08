@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initBusinessStatus();
     renderReviews();
     initMobileMenu();
+    initCookieConsent();
 });
 
 const PHONE_INTL = "33632338587";
@@ -155,4 +156,54 @@ function initMobileMenu() {
             closeMenu();
         }
     });
+}
+
+/**
+ * Gestion du Consentement Cookies (RGPD / CNIL)
+ */
+function initCookieConsent() {
+    const banner = document.getElementById('cookie-banner');
+    const acceptBtn = document.getElementById('cookie-accept');
+    const refuseBtn = document.getElementById('cookie-refuse');
+    const manageBtn = document.getElementById('cookie-manage-btn');
+
+    if (!banner) return;
+
+    const consent = localStorage.getItem('mecapneu_cookie_consent');
+
+    function showBanner() {
+        banner.classList.add('show');
+        banner.setAttribute('aria-hidden', 'false');
+    }
+
+    function hideBanner() {
+        banner.classList.remove('show');
+        banner.setAttribute('aria-hidden', 'true');
+    }
+
+    // Affichage avec un léger délai si l'utilisateur n'a pas encore fait de choix
+    if (!consent) {
+        setTimeout(showBanner, 700);
+    }
+
+    if (acceptBtn) {
+        acceptBtn.addEventListener('click', () => {
+            localStorage.setItem('mecapneu_cookie_consent', 'accepted');
+            hideBanner();
+        });
+    }
+
+    if (refuseBtn) {
+        refuseBtn.addEventListener('click', () => {
+            localStorage.setItem('mecapneu_cookie_consent', 'refused');
+            hideBanner();
+        });
+    }
+
+    if (manageBtn) {
+        manageBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            showBanner();
+        });
+    }
 }
