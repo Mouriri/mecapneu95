@@ -16,7 +16,15 @@ const PHONE_INTL = "33632338587";
  * Gestion du Mode Sombre / Mode Clair (Dark / Light Theme)
  */
 function initThemeToggle() {
-    const savedTheme = localStorage.getItem('mecapneu_theme') || 'dark';
+    let savedTheme = 'dark';
+    try {
+        const stored = localStorage.getItem('mecapneu_theme');
+        if (stored === 'light' || stored === 'dark') {
+            savedTheme = stored;
+        }
+    } catch (e) {
+        // Fallback silently if localStorage is restricted
+    }
     document.documentElement.setAttribute('data-theme', savedTheme);
 
     const toggleBtns = document.querySelectorAll('.theme-toggle-btn, .theme-toggle');
@@ -25,7 +33,9 @@ function initThemeToggle() {
             const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
             const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
             document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('mecapneu_theme', newTheme);
+            try {
+                localStorage.setItem('mecapneu_theme', newTheme);
+            } catch (e) {}
         });
     });
 }
@@ -84,24 +94,37 @@ function initBusinessStatus() {
 }
 
 /**
- * Affichage des Avis Clients Google réels
+ * Fonction utilitaire d'échappement HTML (Protection Anti-XSS)
+ */
+function escapeHTML(str) {
+    if (str === null || str === undefined) return '';
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+}
+
+/**
+ * Affichage des Avis Clients Google réels avec protection XSS
  */
 function renderReviews() {
     const container = document.getElementById('reviews-grid');
-    if (!container || typeof REVIEWS_DATA === 'undefined') return;
+    if (!container || typeof REVIEWS_DATA === 'undefined' || !Array.isArray(REVIEWS_DATA)) return;
 
     container.innerHTML = REVIEWS_DATA.map(rev => `
         <div class="review-card">
             <div>
                 <div class="review-card-top">
-                    <div class="reviewer-name">${rev.name}</div>
-                    <div class="review-date">${rev.date}</div>
+                    <div class="reviewer-name">${escapeHTML(rev.name)}</div>
+                    <div class="review-date">${escapeHTML(rev.date)}</div>
                 </div>
                 <div class="review-stars">★★★★★</div>
-                <p class="review-text">"${rev.comment}"</p>
+                <p class="review-text">"${escapeHTML(rev.comment)}"</p>
             </div>
             <div style="margin-top:0.75rem; font-size:0.78rem; color:var(--text-muted);">
-                ✓ ${rev.service}
+                ✓ ${escapeHTML(rev.service)}
             </div>
         </div>
     `).join('');
@@ -169,7 +192,13 @@ function initCookieConsent() {
 
     if (!banner) return;
 
-    const consent = localStorage.getItem('mecapneu_cookie_consent');
+    let consent = null;
+    try {
+        const storedConsent = localStorage.getItem('mecapneu_cookie_consent');
+        if (storedConsent === 'accepted' || storedConsent === 'refused') {
+            consent = storedConsent;
+        }
+    } catch (e) {}
 
     function showBanner() {
         banner.classList.add('show');
@@ -188,14 +217,18 @@ function initCookieConsent() {
 
     if (acceptBtn) {
         acceptBtn.addEventListener('click', () => {
-            localStorage.setItem('mecapneu_cookie_consent', 'accepted');
+            try {
+                localStorage.setItem('mecapneu_cookie_consent', 'accepted');
+            } catch (e) {}
             hideBanner();
         });
     }
 
     if (refuseBtn) {
         refuseBtn.addEventListener('click', () => {
-            localStorage.setItem('mecapneu_cookie_consent', 'refused');
+            try {
+                localStorage.setItem('mecapneu_cookie_consent', 'refused');
+            } catch (e) {}
             hideBanner();
         });
     }

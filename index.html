@@ -6,6 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="format-detection" content="telephone=no">
     
+    <!-- Security & Hardening Meta Tags -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; frame-src https://maps.google.com https://www.google.com https://www.google.com/maps/; connect-src 'self' https:; base-uri 'self'; form-action 'self' https://wa.me https://maps.google.com;">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), payment=(), geolocation=(self)">
+
     <!-- Primary SEO Title & Meta -->
     <title>MECA PNEU 95 | Garage Pneus Neufs & Occasions à Écouen (95) - Montage Sans RDV 7j/7</title>
     <meta name="title" content="MECA PNEU 95 | Garage Pneus Neufs & Occasions à Écouen (95) - Montage Sans RDV 7j/7">
@@ -56,13 +62,16 @@
     <!-- Stylesheet -->
     <link rel="stylesheet" href="css/style.css?v=5">
 
-    <!-- Early Theme Init (Prevents theme flashing) -->
+    <!-- Early Theme Init (Prevents theme flashing & DOM attribute injection) -->
     <script>
         (function() {
             try {
-                var theme = localStorage.getItem('mecapneu_theme') || 'dark';
-                document.documentElement.setAttribute('data-theme', theme);
-            } catch (e) {}
+                var theme = localStorage.getItem('mecapneu_theme');
+                var safeTheme = (theme === 'light') ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', safeTheme);
+            } catch (e) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
         })();
     </script>
     
@@ -296,7 +305,7 @@
                 <a href="tel:+33632338587" class="btn btn-outline" title="Appeler MECA PNEU 95">
                     📞 06 32 33 85 87
                 </a>
-                <a href="https://wa.me/33632338587" target="_blank" class="btn btn-whatsapp" title="Envoyer un message WhatsApp">
+                <a href="https://wa.me/33632338587" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" title="Envoyer un message WhatsApp">
                     WhatsApp
                 </a>
 
@@ -412,7 +421,7 @@
                         <a href="tel:+33632338587" class="btn btn-primary" style="padding:0.8rem 1.6rem;">
                             Appeler l'Atelier (06 32 33 85 87)
                         </a>
-                        <a href="https://wa.me/33632338587?text=Bonjour%20Meca%20Pneu%2095%2C%20je%20souhaite%20conna%C3%AEtre%20la%20disponibilit%C3%A9%20d'une%20dimension%20de%20pneu." target="_blank" class="btn btn-whatsapp" style="padding:0.8rem 1.6rem;">
+                        <a href="https://wa.me/33632338587?text=Bonjour%20Meca%20Pneu%2095%2C%20je%20souhaite%20conna%C3%AEtre%20la%20disponibilit%C3%A9%20d'une%20dimension%20de%20pneu." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" style="padding:0.8rem 1.6rem;">
                             Demande de Pneus sur WhatsApp
                         </a>
                     </div>
@@ -784,7 +793,9 @@
                         <iframe 
                             title="Plan d'accès Google Maps MECA PNEU 95 à Écouen"
                             src="https://maps.google.com/maps?q=18+rue+Georges+Joyeux+95440+Ecouen&t=&z=15&ie=UTF8&iwloc=&output=embed" 
-                            loading="lazy">
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            sandbox="allow-scripts allow-same-origin allow-popups">
                         </iframe>
                     </div>
                 </div>
