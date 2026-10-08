@@ -3,9 +3,14 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
     <url>
         <loc>https://mecapneu95.fr/</loc>
-        <lastmod>2026-10-04</lastmod>
+        <lastmod>2026-10-08</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
+        <image:image>
+            <image:loc>https://mecapneu95.fr/images/logo-mecapneu.png</image:loc>
+            <image:title>Logo officiel MECA PNEU 95 Écouen</image:title>
+            <image:caption>Spécialiste vente et montage de pneus neufs et occasions dans le Val-d'Oise</image:caption>
+        </image:image>
         <image:image>
             <image:loc>https://mecapneu95.fr/images/atelier-stock-pneus.jpg</image:loc>
             <image:title>Stock de pneus neufs et occasions Meca Pneu 95</image:title>
