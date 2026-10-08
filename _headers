@@ -5,4 +5,4 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
   Permissions-Policy: camera=(), microphone=(), payment=(), geolocation=(self)
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; frame-src https://maps.google.com https://www.google.com https://www.google.com/maps/; connect-src 'self' https:; base-uri 'self'; form-action 'self' https://wa.me https://maps.google.com;
+  Content-Security-Policy: upgrade-insecure-requests; default-src 'self' https:; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; frame-src https://maps.google.com https://www.google.com https://www.google.com/maps/; connect-src 'self' https:; base-uri 'self'; form-action 'self' https://wa.me https://maps.google.com;

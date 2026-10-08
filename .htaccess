@@ -5,10 +5,13 @@
 # 1. Empêcher l'exploration des répertoires (Directory Browsing)
 Options -Indexes -MultiViews
 
-# 2. Redirection forcée vers HTTPS
+# 2. Redirection forcée vers HTTPS (Direct + Proxies Cloudflare/OVH)
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    RewriteCond %{HTTPS} off
+    RewriteCond %{HTTPS} off [OR]
+    RewriteCond %{HTTP:X-Forwarded-Proto} !https
+    RewriteCond %{HTTP_HOST} !^localhost [NC]
+    RewriteCond %{HTTP_HOST} !^127\.0\.0\.1
     RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 </IfModule>
 
@@ -32,8 +35,8 @@ Options -Indexes -MultiViews
     # Restriction des APIs matérielles du navigateur (Permissions Policy)
     Header always set Permissions-Policy "camera=(), microphone=(), payment=(), geolocation=(self)"
 
-    # Politique de Sécurité de Contenu (Content Security Policy)
-    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; frame-src https://maps.google.com https://www.google.com https://www.google.com/maps/; connect-src 'self' https:; base-uri 'self'; form-action 'self' https://wa.me https://maps.google.com;"
+    # Politique de Sécurité de Contenu (Content Security Policy) avec surclassement HTTPS automatique
+    Header always set Content-Security-Policy "upgrade-insecure-requests; default-src 'self' https:; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; frame-src https://maps.google.com https://www.google.com https://www.google.com/maps/; connect-src 'self' https:; base-uri 'self'; form-action 'self' https://wa.me https://maps.google.com;"
 </IfModule>
 
 # 4. Blocage de l'accès aux fichiers sensibles et dossiers cachés (.git, .env, .jsonl, etc.)
