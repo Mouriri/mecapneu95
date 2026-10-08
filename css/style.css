@@ -567,6 +567,32 @@ img {
     background: var(--bg-section-alt);
 }
 
+.gallery-logo-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.gallery-logo-img {
+    max-width: 175px;
+    width: 45%;
+    min-width: 130px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.45));
+    transition: transform var(--transition);
+}
+
+.gallery-logo-wrap:hover .gallery-logo-img {
+    transform: scale(1.04);
+}
+
+[data-theme="light"] .gallery-logo-img {
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.12));
+}
+
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
