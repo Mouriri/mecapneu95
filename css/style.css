@@ -158,7 +158,7 @@ img {
     background: var(--bg-topbar);
     border-bottom: 1px solid var(--border);
     font-size: 0.84rem;
-    padding: 0.55rem 0;
+    padding: 0.5rem 0;
     color: var(--text-secondary);
 }
 
@@ -166,24 +166,45 @@ img {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 0.75rem;
+    gap: 1.25rem;
 }
 
 .top-bar-left {
     display: flex;
     align-items: center;
-    gap: 1.25rem;
-    flex-wrap: wrap;
+    gap: 1.1rem;
+    flex-shrink: 0;
 }
 
-.mobile-status-strip {
+.topbar-logo-wrap {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem;
+}
+
+.topbar-logo-img {
+    height: 62px;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
+    transition: transform var(--transition);
+}
+
+.topbar-logo-wrap:hover .topbar-logo-img {
+    transform: scale(1.06);
+}
+
+.top-bar-right {
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+    flex-shrink: 0;
+}
+
+.mobile-header-status {
     display: none;
-    background: var(--bg-topbar);
-    border-bottom: 1px solid var(--border);
-    padding: 0.45rem 1rem;
-    text-align: center;
-    font-size: 0.8rem;
 }
 
 .live-badge {
@@ -422,6 +443,10 @@ img {
     grid-template-columns: 1.1fr 0.9fr;
     gap: 3.5rem;
     align-items: center;
+}
+
+.mobile-hero-logo {
+    display: none;
 }
 
 .hero-tag {
@@ -935,6 +960,61 @@ img {
     font-weight: 700;
 }
 
+.contact-social-icons {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border);
+}
+
+.contact-icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-sm);
+    background: var(--bg-subtle);
+    border: 1px solid var(--border);
+    transition: all var(--transition);
+    text-decoration: none;
+}
+
+.contact-icon-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.contact-icon-btn.btn-maps:hover {
+    border-color: rgba(66, 133, 244, 0.6);
+    background: rgba(66, 133, 244, 0.12);
+    box-shadow: 0 4px 14px rgba(66, 133, 244, 0.3);
+}
+
+.contact-icon-btn.btn-ig:hover {
+    border-color: rgba(225, 48, 108, 0.6);
+    background: rgba(225, 48, 108, 0.12);
+    box-shadow: 0 4px 14px rgba(225, 48, 108, 0.3);
+}
+
+.contact-icon-btn.btn-tt:hover {
+    border-color: rgba(0, 242, 254, 0.6);
+    background: rgba(0, 242, 254, 0.12);
+    box-shadow: 0 4px 14px rgba(0, 242, 254, 0.3);
+}
+
+.contact-icon-btn.btn-snap:hover {
+    border-color: rgba(255, 252, 0, 0.6);
+    background: rgba(255, 252, 0, 0.12);
+    box-shadow: 0 4px 14px rgba(255, 252, 0, 0.3);
+}
+
+.contact-icon-btn svg {
+    display: block;
+}
+
 .map-container {
     height: 100%;
     min-height: 380px;
@@ -979,6 +1059,14 @@ img {
     color: #cbd5e1 !important;
     font-size: 0.88rem;
     line-height: 1.6;
+}
+
+.footer-social-icons {
+    margin-top: 1rem;
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
 .footer-grid {
@@ -1216,13 +1304,38 @@ img {
 
 @media (max-width: 768px) {
     .navbar {
-        justify-content: flex-end;
+        justify-content: space-between;
+        gap: 0.5rem;
+    }
+    .mobile-header-status {
+        display: flex;
+        align-items: center;
+        flex: 1;
+        min-width: 0;
+    }
+    .mobile-header-status .live-badge {
+        font-size: 0.72rem;
+        padding: 0.28rem 0.55rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
+        line-height: 1.2;
+    }
+    .mobile-header-status .live-dot {
+        flex-shrink: 0;
     }
     .top-bar {
         display: none;
     }
     .nav-links {
         display: none;
+    }
+    .nav-cta {
+        display: flex;
+        align-items: center;
+        gap: 0.45rem;
+        flex-shrink: 0;
     }
     .nav-cta .btn {
         display: none;
@@ -1242,6 +1355,21 @@ img {
     .hero-image-badge {
         position: static;
         margin-top: 1rem;
+    }
+    .mobile-hero-logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 1.25rem;
+        text-align: center;
+    }
+    .mobile-hero-logo img {
+        max-width: 210px;
+        width: 65%;
+        height: auto;
+        object-fit: contain;
+        filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.45));
     }
     .footer-bottom {
         flex-direction: column;
